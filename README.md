@@ -26,7 +26,7 @@ Property	                  |	Type   	     |	Default	                      |	Desc
  labelWidth                | number        | 85                             | The width of an individual label
  fillingMotion             | object        |{ stiffness: 150, damping: 25 } | Sets the animation style of how filling motion will look
  slidingMotion             | object        |{ stiffness: 150, damping: 25 } | Sets the animation style of how sliding motion will look
- styles                    | object        |{ background: '#f8f8f8', foreground: '#7b9d6f', outline: '#dfdfdf' } | object containing the styles for the timeline currently outline (the color of the boundaries of the timeline and the buttons on it's either side), foreground (the filling color, active color) and background (the background color of your page) colors of the timeline can be changed.
+ styles                    | object        |{ background: '#f8f8f8', foreground: '#7b9d6f', outline: '#dfdfdf' , noLinearGradient: false} | object containing the styles for the timeline currently outline (the color of the boundaries of the timeline and the buttons on it's either side), foreground (the filling color, active color) and background (the background color of your page) colors of the timeline can be changed, noLinearGradient determine whenever to draw linear gradient color in li.style:background-image.
  isTouchEnabled            | boolean       | true                           | Enable touch events (swipe left, right)
  isKeyboardEnabled         | boolean       | true                           | Enable keyboard events (up, down, left, right)
  isOpenBeginning           | boolean       | true                           | Show the beginning of the timeline as open ended
