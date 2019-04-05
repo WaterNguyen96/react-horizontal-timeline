@@ -49,7 +49,7 @@ const Faders = props => (
     <li
       style={[
         faderStyle.base,
-        !props.noLinearGradient
+        !props.styles.noLinearGradient
           ? faderStyle.specific(props.styles, LEFT, RIGHT)
           : faderStyle.specificNoLG(LEFT)
       ]}
@@ -57,7 +57,7 @@ const Faders = props => (
     <li
       style={[
         faderStyle.base,
-        !props.noLinearGradient
+        !props.styles.noLinearGradient
           ? faderStyle.specific(props.styles, RIGHT, LEFT)
           : faderStyle.specificNoLG(RIGHT)
       ]}
@@ -65,9 +65,6 @@ const Faders = props => (
   </ul>
 );
 
-Faders.defaultProps = {
-  noLinearGradient: false
-};
 /**
  * The styles that parent will provide
  * @type {Object}
