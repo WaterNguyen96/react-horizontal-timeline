@@ -1,4 +1,6 @@
 # React Horizontal Timeline
+This project if forked for my personal usage, I modified... things from the source code
+
 [![npm version](https://badge.fury.io/js/react-horizontal-timeline.svg)](https://badge.fury.io/js/react-horizontal-timeline)
 [![Build Status](https://travis-ci.org/jckdrpr/react-horizontal-timeline.svg?branch=master)](https://travis-ci.org/jckdrpr/react-horizontal-timeline)
 [![Code Climate](https://codeclimate.com/github/jckdrpr/react-horizontal-timeline/badges/gpa.svg)](https://codeclimate.com/github/jckdrpr/react-horizontal-timeline)

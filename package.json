@@ -8,12 +8,12 @@
     "build": "cross-env NODE_ENV=production webpack --config tools/webpack.config.prod.js",
     "build:demos": "cross-env NODE_ENV=production webpack --config tools/webpack.config.demos.js",
     "prepublish": "yarn build",
-    "lint": "./node_modules/.bin/eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
+    "lint": "eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jckdrpr/react-horizontal-timeline"
+    "url": "git+https://github.com/WaterNguyen96/react-horizontal-timeline.git"
   },
   "keywords": [
     "react",
@@ -22,12 +22,12 @@
     "react-motion",
     "react-component"
   ],
-  "author": "Sherub Thakur",
+  "author": "Thuy Nguyen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jckdrpr/react-horizontal-timeline/issues"
+    "url": "https://github.com/WaterNguyen96/react-horizontal-timeline/issues"
   },
-  "homepage": "https://github.com/jckdrpr/react-horizontal-timeline",
+  "homepage": "https://github.com/WaterNguyen96/react-horizontal-timeline",
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.1.0",
     "color": "^3.0.0",
@@ -58,6 +58,8 @@
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.1",
     "jest": "^23.6.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-swipeable-views": "^0.13.0",
     "react-test-renderer": "^16.5.2",
     "react-transform-hmr": "^1.0.1",
@@ -69,8 +71,5 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.3"
   },
-  "peerDependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
-  }
+  "peerDependencies": {}
 }

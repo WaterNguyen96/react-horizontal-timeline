@@ -1,12 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
+import React from "react";
+import PropTypes from "prop-types";
+import Radium from "radium";
 
-import Color from 'color';
+import Color from "color";
 
-const LEFT = 'left';
-const RIGHT = 'right';
-
+const LEFT = "left";
+const RIGHT = "right";
 
 /**
  * Returns the styles that generate a fading effect on the edges of the timeline
@@ -18,20 +17,26 @@ const RIGHT = 'right';
  */
 const faderStyle = {
   base: {
-    top: '50%',
-    position: 'absolute',
-    bottom: 'auto',
-    transform: 'translateY(-50%)',
-    height: '100%',
+    top: "50%",
+    position: "absolute",
+    bottom: "auto",
+    transform: "translateY(-50%)",
+    height: "100%",
     width: 20,
-    overflow: 'hidden',
+    overflow: "hidden"
   },
   specific: (styles, position, gradientDirection) => ({
     [position]: 40,
-    backgroundImage: `linear-gradient(to ${gradientDirection}, ${styles.background}, ${Color(styles.background).alpha(0).rgb()})`
+    backgroundImage: `linear-gradient(to ${gradientDirection}, ${
+      styles.background
+    }, ${Color(styles.background)
+      .alpha(0)
+      .rgb()})`
+  }),
+  specificNoLG: position => ({
+    [position]: 40
   })
 };
-
 
 /**
  * The markup Information for an element that produces the fade effect at the end of the timeline
@@ -39,14 +44,30 @@ const faderStyle = {
  * @param  {object} props The props from parent mainly styles
  * @return {StatelessFunctionalReactComponent} Markup Information for the fader
  */
-const Faders = (props) => (
-  <ul style={{ listStyle: 'none' }}>
-    <li style={[ faderStyle.base, faderStyle.specific(props.styles, LEFT, RIGHT) ]} />
-    <li style={[ faderStyle.base, faderStyle.specific(props.styles, RIGHT, LEFT) ]} />
+const Faders = props => (
+  <ul style={{ listStyle: "none" }}>
+    <li
+      style={[
+        faderStyle.base,
+        !props.noLinearGradient
+          ? faderStyle.specific(props.styles, LEFT, RIGHT)
+          : faderStyle.specificNoLG(LEFT)
+      ]}
+    />
+    <li
+      style={[
+        faderStyle.base,
+        !props.noLinearGradient
+          ? faderStyle.specific(props.styles, RIGHT, LEFT)
+          : faderStyle.specificNoLG(RIGHT)
+      ]}
+    />
   </ul>
 );
 
-
+Faders.defaultProps = {
+  noLinearGradient: false
+};
 /**
  * The styles that parent will provide
  * @type {Object}
@@ -55,9 +76,9 @@ Faders.propTypes = {
   styles: PropTypes.shape({
     foreground: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
-    outline: PropTypes.string.isRequired
+    outline: PropTypes.string.isRequired,
+    noLinearGradient: PropTypes.bool
   })
 };
-
 
 export default Radium(Faders);
