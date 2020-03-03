@@ -221,7 +221,7 @@ class EventsBar extends React.Component {
                 style={{
                   position: "absolute",
                   left: 0,
-                  top: 49,
+                  top: "50%",
                   height: 2,
                   width: this.props.totalWidth,
                   WebkitTransform: `translate3d(${X}, 0, 0)px`,

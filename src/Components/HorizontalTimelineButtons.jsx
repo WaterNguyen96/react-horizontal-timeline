@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Radium from 'radium';
-import Constants from '../Constants';
+import React from "react";
+import PropTypes from "prop-types";
+import Radium from "radium";
+import Constants from "../Constants";
 
 // icons
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 // this handles the rendering part of the buttons that appear on either side of
 // the timeline.
@@ -21,48 +21,47 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
  */
 const buttonStyles = {
   link: ({ outline }) => ({
-    position: 'absolute',
-    top: '49px',
-    bottom: 'auto',
-    transform: 'translateY(-50%)',
+    position: "absolute",
+    top: "50%",
+    bottom: "auto",
+    transform: "translateY(-50%)",
     height: 34,
     width: 34,
-    borderRadius: '50%',
+    borderRadius: "50%",
     border: `2px solid ${outline}`,
-    overflow: 'hidden',
-    textIndent: '100%',
-    whiteSpace: 'nowrap',
-    transition: 'border-color 0.3s',
+    overflow: "hidden",
+    textIndent: "100%",
+    whiteSpace: "nowrap",
+    transition: "border-color 0.3s"
   }),
   icon: (styles, active) => ({
-    position: 'absolute',
+    position: "absolute",
     left: 0,
-    top: '50%',
-    bottom: 'auto',
-    transform: 'translateY(-50%)',
+    top: "50%",
+    bottom: "auto",
+    transform: "translateY(-50%)",
     height: 20,
     width: 29,
-    overflow: 'hidden',
-    textIndent: '100%',
-    whiteSpace: 'nowrap',
+    overflow: "hidden",
+    textIndent: "100%",
+    whiteSpace: "nowrap",
     fill: active ? styles.foreground : styles.outline
   }),
-  inactive: (styles) => ({
+  inactive: styles => ({
     color: styles.outline,
-    cursor: 'not-allowed',
-    ':hover': {
+    cursor: "not-allowed",
+    ":hover": {
       border: `2px solid ${styles.outline}`
     }
   }),
-  active: (styles) => ({
-    cursor: 'pointer',
-    ':hover': {
+  active: styles => ({
+    cursor: "pointer",
+    ":hover": {
       border: `2px solid ${styles.foreground}`,
       color: styles.foreground
     }
   })
 };
-
 
 /**
  * Markup for both the buttons (that translate the timeline left or right).
@@ -70,22 +69,23 @@ const buttonStyles = {
  * @param  {object} props The info provided by the parent
  * @return {StatelessFunctionalReactComponent} The Markup info for both the buttons
  */
-const HorizontalTimelineButtons = (props) => {
+const HorizontalTimelineButtons = props => {
   const buttonBackEnabled = Math.round(props.position) < 0;
-  const buttonForwardEnabled = Math.round(props.position) > Math.round(props.maxPosition);
-  const baseStyles = [
-    buttonStyles.link(props.styles),
-  ];
+  const buttonForwardEnabled =
+    Math.round(props.position) > Math.round(props.maxPosition);
+  const baseStyles = [buttonStyles.link(props.styles)];
 
   return (
     <ul className="buttons">
       <li
-        className={`button-back ${buttonBackEnabled ? 'enabled' : 'disabled'}`}
+        className={`button-back ${buttonBackEnabled ? "enabled" : "disabled"}`}
         key={Constants.LEFT}
         onClick={() => props.updateSlide(Constants.LEFT)}
         style={[
           buttonStyles.link(props.styles),
-          buttonBackEnabled ? buttonStyles.active(props.styles) : buttonStyles.inactive(props.styles),
+          buttonBackEnabled
+            ? buttonStyles.active(props.styles)
+            : buttonStyles.inactive(props.styles),
           { [Constants.LEFT]: 0 }
         ]}
       >
@@ -94,12 +94,16 @@ const HorizontalTimelineButtons = (props) => {
         />
       </li>
       <li
-        className={`button-forward ${buttonForwardEnabled ? 'enabled' : 'disabled'}`}
+        className={`button-forward ${
+          buttonForwardEnabled ? "enabled" : "disabled"
+        }`}
         key={Constants.RIGHT}
         onClick={() => props.updateSlide(Constants.RIGHT)}
         style={[
           buttonStyles.link(props.styles),
-          buttonForwardEnabled ? buttonStyles.active(props.styles) : buttonStyles.inactive(props.styles),
+          buttonForwardEnabled
+            ? buttonStyles.active(props.styles)
+            : buttonStyles.inactive(props.styles),
           { [Constants.RIGHT]: 0 }
         ]}
       >
@@ -109,8 +113,7 @@ const HorizontalTimelineButtons = (props) => {
       </li>
     </ul>
   );
-}
-
+};
 
 // Expected propteries
 HorizontalTimelineButtons.propTypes = {
