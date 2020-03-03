@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = { value: 0, previous: 0 };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.data = GameInfo.map((game, index) => {
       return ({
         date: game.date,

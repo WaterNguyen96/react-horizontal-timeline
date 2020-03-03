@@ -7,9 +7,15 @@ import HorizontalTimelineConfigurator from './HorizontalTimelineConfigurator';
 
 
 export default class HorizontalTimelineContent extends React.Component {
+
+  static propTypes = {
+    content: PropTypes.arrayOf(PropTypes.object).isRequired
+  }
+
   constructor(props) {
     super(props);
     this.state = {
+      dates: props.content.map((entry) => entry.date),
       value: 0,
       previous: 0,
       showConfigurator: false,
@@ -33,16 +39,11 @@ export default class HorizontalTimelineContent extends React.Component {
     };
   }
 
-  static propTypes = {
-    content: PropTypes.arrayOf(PropTypes.object).isRequired
-  }
-
-  componentWillMount() {
-    this.dates = this.props.content.map((entry) => entry.date);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.dates = nextProps.content.map((entry) => entry.date);
+  componentDidUpdate(prevProps) {
+    if (this.props.content !== prevProps.content)
+      this.setState({
+        dates: props.content.map((entry) => entry.date)
+      })
   }
 
   render() {
@@ -51,7 +52,7 @@ export default class HorizontalTimelineContent extends React.Component {
     const views = this.props.content.map((entry, index) => {
       return (
         <div className='container' key={index}>
-          { entry.component }
+          {entry.component}
         </div>
       );
     });
@@ -90,7 +91,7 @@ export default class HorizontalTimelineContent extends React.Component {
               foreground: state.stylesForeground,
               outline: state.stylesOutline
             }}
-            values={ this.dates }
+            values={this.state.dates}
             isOpenEnding={state.isOpenEnding}
             isOpenBeginning={state.isOpenBeginning}
           />
@@ -116,7 +117,7 @@ export default class HorizontalTimelineContent extends React.Component {
             Configure the Timeline
           </label>
         </div>
-        { configurator }
+        {configurator}
       </div>
     );
   }
