@@ -1,6 +1,6 @@
 {
   "name": "@nhuthuy96/react-horizontal-timeline",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A horizontal timeline component made using react",
   "main": "./dist/react-horizontal-timeline.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "test": "jest",
     "preversion": "yarn test",
     "version": "yarn build",
-    "postversion": "git push --tags"
+    "postversion": "git push --tags && git push"
   },
   "repository": {
     "type": "git",
