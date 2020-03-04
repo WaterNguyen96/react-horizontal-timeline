@@ -9,7 +9,10 @@
     "build:demos": "cross-env NODE_ENV=production webpack --config tools/webpack.config.demos.js",
     "prepublish": "yarn build",
     "lint": "eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
-    "test": "jest"
+    "test": "jest",
+    "preversion": "yarn test",
+    "version": "yarn build",
+    "postversion": "git push --tags"
   },
   "repository": {
     "type": "git",
